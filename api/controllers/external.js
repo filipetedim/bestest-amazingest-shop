@@ -14,8 +14,8 @@ const getExternalProducts = async (req, res) => {
   };
 
   Axios.get(url, axiosConfig)
-    .then(response => res.status(200).json({ products: response.data }))
-    .catch(() => res.status(404).json({ error: 'Not found' }));
+    .then(response => res.status(200).json(response.data))
+    .catch(error => res.status(500).json({ message: 'Something went wrong', error }));
 };
 
 module.exports = {

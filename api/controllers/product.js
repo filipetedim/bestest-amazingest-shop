@@ -57,9 +57,21 @@ const updateProduct = (req, res) => {
     .catch(error => res.status(500).json({ message: 'Something went wrong', error }));
 };
 
+/**
+ * Deletes a product.
+ */
+const deleteProduct = (req, res) => {
+  const { id } = req.params;
+
+  Product.findByIdAndDelete(id)
+    .then(() => res.status(200).json({}))
+    .catch(error => res.status(500).json({ message: 'Something went wrong', error }));
+};
+
 module.exports = {
   getProducts,
   getProduct,
   createProduct,
   updateProduct,
+  deleteProduct,
 };

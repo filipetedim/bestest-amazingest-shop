@@ -18,3 +18,7 @@
 Decided to use a cloud service instead of a local instance to avoid issues when installing in different Operating Systems.
 
 MongoDB Atlas has a free forever tier sandbox that fits perfectly.
+
+### Development
+
+* Prettier runs on pre-commit

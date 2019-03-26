@@ -29,7 +29,7 @@ app.use(BodyParser.json({ limit: "50mb" }));
 
 // Routes
 // TODO:
-app.use("/v1", (req, res) => res.send(200));
+app.use("/v1", (req, res) => res.sendStatus(200));
 
 // Run server
 server.listen(

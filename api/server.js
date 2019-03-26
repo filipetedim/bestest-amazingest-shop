@@ -28,8 +28,7 @@ app.use(BodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(BodyParser.json({ limit: "50mb" }));
 
 // Routes
-// TODO:
-app.use("/v1", (req, res) => res.sendStatus(200));
+app.use("/v1", require("./routes"));
 
 // Run server
 server.listen(

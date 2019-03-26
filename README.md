@@ -37,6 +37,7 @@ Thanos bought his glove here.
 
 ### Routes
 
+* /external
 * /products
 * /products/{id}
 * /bundles

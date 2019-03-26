@@ -1,0 +1,5 @@
+{
+  "URL": "https://product-service.herokuapp.com/api/v1/products",
+  "USERNAME": "user",
+  "PASSWORD": "pass"
+}

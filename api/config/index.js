@@ -4,6 +4,7 @@ const Path = require('path');
 // Custom dependencies
 const Config = require('./config.json');
 const Database = require('./database.json');
+const ExternalAPI = require('./externalApi.json');
 
 /**
  * Creates the url to connect to atlas.
@@ -17,5 +18,6 @@ module.exports = {
   TOKEN_SECRET: Config.TOKEN_SECRET,
   TOKEN_EXPIRATION: Config.TOKEN_EXPIRATION,
   ROOT_PATH: Path.resolve(__dirname, '..'),
+  EXTERNAL_API: ExternalAPI,
   getDatabaseConnectionUrl,
 };

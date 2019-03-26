@@ -5,15 +5,13 @@ const express = require('express');
 const router = express.Router();
 
 // Routes
-// TODO:
+const External = require('./external');
 
 // Middlewares
 // TODO:
 
 // Registrations
-// TODO:
-router.use((req, res) =>
-  res.status(404).json({ error: `${req.originalUrl} not found` }),
-);
+router.use('/external', External);
+router.use((req, res) => res.status(404).json({ error: `${req.originalUrl} not found` }));
 
 module.exports = router;

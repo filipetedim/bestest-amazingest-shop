@@ -1,0 +1,11 @@
+{
+  "name": "bestest-amazingest-shop-api",
+  "version": "0.1.0",
+  "description": "Bestest Amazingest Shop API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Filipe Tedim",
+  "license": "ISC"
+}

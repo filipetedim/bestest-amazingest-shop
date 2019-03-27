@@ -59,11 +59,6 @@ export default class Products extends Component {
               products={products}
             />
             <ProductsGroup loading={loading} error={errorProducts} products={products} />
-            <ProductsGroup
-              loading={loading}
-              error="This is how an error load would look like"
-              products={products}
-            />
           </Container>
         </ContentWrapper>
         <Cart />

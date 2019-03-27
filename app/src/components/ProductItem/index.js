@@ -6,6 +6,9 @@ import { faShoppingCart, faCheck } from '@fortawesome/free-solid-svg-icons';
 // Theme
 import './style.scss';
 
+// Stores
+import CartStore from '../../stores/cartStore';
+
 // Utils
 import History from '../../utils/history';
 
@@ -27,10 +30,9 @@ export default class ProductItem extends Component {
    */
   addToCart = event => {
     event.stopPropagation();
-
     this.setState({ addedToCart: true });
 
-    // TODO: Add to cart
+    CartStore.addProduct(this.state.product);
 
     setTimeout(() => {
       this.setState({ addedToCart: false });
@@ -40,7 +42,10 @@ export default class ProductItem extends Component {
   render() {
     const { addedToCart, product } = this.state;
     return (
-      <div className="bas-product-item" onClick={() => History.push(`/products/${product._id}`)}>
+      <div
+        className="mb-3 bas-product-item"
+        onClick={() => History.push(`/products/${product._id}`)}
+      >
         <Row>
           <Col>Image</Col>
         </Row>

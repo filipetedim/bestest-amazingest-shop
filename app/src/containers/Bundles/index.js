@@ -24,8 +24,8 @@ export default class Bundles extends Component {
       <React.Fragment>
         {/* Title */}
         <Row>
-          <Col className="pl-0">
-            <h3>Bundles</h3>
+          <Col className="pl-0 mt-4 bas-bundles-title">
+            <h5>BUNDLES</h5>
           </Col>
         </Row>
 

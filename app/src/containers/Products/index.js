@@ -24,8 +24,8 @@ export default class Products extends Component {
       <React.Fragment>
         {/* Title */}
         <Row>
-          <Col className="pl-0">
-            <h3>Products</h3>
+          <Col className="pl-0 mt-4 bas-products-title">
+            <h5>PRODUCTS</h5>
           </Col>
         </Row>
 
@@ -39,8 +39,8 @@ export default class Products extends Component {
         {!loading && !error && (
           <Row>
             {products.map(product => (
-              <Col key={product._id} className="pl-0">
-                <ProductItem product={product} />{' '}
+              <Col xs={12} sm={12} lg={6} xl={4} key={product._id} className="pl-0">
+                <ProductItem product={product} />
               </Col>
             ))}
           </Row>

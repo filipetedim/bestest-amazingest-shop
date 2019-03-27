@@ -6,8 +6,8 @@ Thanos bought his glove here.
 
 ## Table of Contents
 
-* [Frontend README](https://github.com/filipetedim/bestest-amazingest-shop/blob/master/app/README.md)
-* [Backend README](https://github.com/filipetedim/bestest-amazingest-shop/blob/master/api/README.md)
+* [Frontend README](https://github.com/filipetedim/bestest-amazingest-shop/tree/master/app/README.md)
+* [Backend README](https://github.com/filipetedim/bestest-amazingest-shop/tree/master/api/README.md)
 
 ## Frontend requirements
 

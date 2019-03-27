@@ -29,6 +29,7 @@ Endpoint tests are done by Mocha together with Chai/Chai-http. All validations a
 * Currently 60 tests were created
 
 _May have gone overboard with tests_, but since it was lacking in my current repertoire, thought it was worth being thorough to get used to them.
+![Should be asleep](https://i.imgur.com/ht8HWkO.png)
 
 ## Database
 

@@ -4,8 +4,9 @@ import * as serviceWorker from './serviceWorker';
 import { Router } from 'react-router-dom';
 
 // Theme
+import 'typeface-roboto';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
+import './index.scss';
 
 // App
 import App from './App';

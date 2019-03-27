@@ -18,6 +18,7 @@ const hasParamInValidationErrors = (array, param, msg) => {
   return !!error;
 };
 
+/* eslint-disable no-unused-expressions */
 describe('Endpoint -> Products', () => {
   /**
    * Clear testing database

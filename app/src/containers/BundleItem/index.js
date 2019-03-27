@@ -35,6 +35,18 @@ export default class BundleItem extends Component {
   getPriceWithDiscount = bundle =>
     (this.getPrice(bundle) * (100 - bundle.discountPercentage || 0)) / 100;
 
+  /**
+   * Gets a string with all the product names
+   */
+  getProductNames = bundle =>
+    bundle.products.reduce(
+      (text, product) => (text += text === '' ? product.name : ', ' + product.name),
+      ''
+    );
+
+  /**
+   * Adds all the products in the bundle to the cart.
+   */
   addToCart = event => {
     this.setState({ addedToCart: true });
 
@@ -57,9 +69,11 @@ export default class BundleItem extends Component {
         </Col>
 
         {/* Details */}
-
         <Col xs={12} className="bas-bundle-name">
           {bundle.name}
+        </Col>
+        <Col xs={12} className="bas-bundle-products">
+          includes: {this.getProductNames(bundle)}
         </Col>
         <Row>
           <Col xs={12} className="text-right bas-bundle-price-old">

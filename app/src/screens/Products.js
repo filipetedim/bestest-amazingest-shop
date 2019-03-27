@@ -61,7 +61,7 @@ export default class Products extends Component {
             <ProductsGroup loading={loading} error={errorProducts} products={products} />
           </Container>
         </ContentWrapper>
-        <Cart />
+        <Cart bundles={bundles} />
       </Container>
     );
   }

@@ -21,8 +21,7 @@ export default class ProductItem extends Component {
   }
 
   componentWillReceiveProps(props) {
-    const { product } = props;
-    this.setState({ product });
+    this.setState({ product: props.product });
   }
 
   /**

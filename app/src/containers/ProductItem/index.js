@@ -46,16 +46,14 @@ export default class ProductItem extends Component {
         onClick={() => History.push(`/products/${product._id}`)}
       >
         {/* Image */}
-        <Row>
-          <Col>Image</Col>
-        </Row>
+        <Col xs={12}>Image</Col>
 
         {/* Details */}
         <Row>
-          <Col xs={8} className="bas-product-name">
+          <Col xs={7} className="bas-product-name">
             {product.name}
           </Col>
-          <Col xs={4} className="text-right bas-product-price">
+          <Col xs={5} className="text-right bas-product-price">
             <Button
               size="sm"
               color="light"

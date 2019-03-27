@@ -39,7 +39,7 @@ export default class Products extends Component {
         {!loading && !error && (
           <Row>
             {products.map(product => (
-              <Col xs={12} sm={12} lg={6} xl={4} key={product._id} className="pl-0">
+              <Col xs={12} sm={12} lg={4} xl={3} key={product._id} className="pl-0">
                 <ProductItem product={product} />
               </Col>
             ))}

@@ -13,7 +13,7 @@ import CartStore from '../../stores/cartStore';
 import History from '../../utils/history';
 
 export default class BundleItem extends Component {
-  state = { addedToCart: false, bundle: {} };
+  state = { addedToCart: false, bundle: { products: [] } };
 
   componentDidMount() {
     this.setState({ bundle: this.props.bundle });
@@ -23,22 +23,52 @@ export default class BundleItem extends Component {
     this.setState({ bundle: props.bundle });
   }
 
+  /**
+   * Gets the price of the bundle.
+   */
+  getPrice = bundle => bundle.products.reduce((price, product) => price + product.price, 0);
+
+  /**
+   * Returns the discounted price.
+   * Percentage multiplier is (100 - discountPercentage) / 100.
+   */
+  getPriceWithDiscount = bundle =>
+    (this.getPrice(bundle) * (100 - bundle.discountPercentage || 0)) / 100;
+
+  addToCart = event => {
+    this.setState({ addedToCart: true });
+
+    this.state.bundle.products.forEach(product => CartStore.addProduct(product));
+
+    setTimeout(() => {
+      this.setState({ addedToCart: false });
+    }, 2000);
+  };
+
   render() {
     const { addedToCart, bundle } = this.state;
 
     return (
       <div className="mb-3 bas-bundle-item">
         {/* Image */}
-        <Row>
-          <Col>Image</Col>
-        </Row>
+        <Col xs={12}>
+          <div className="bas-bundle-discount" />
+          Image
+        </Col>
 
         {/* Details */}
+
+        <Col xs={12} className="bas-bundle-name">
+          {bundle.name}
+        </Col>
         <Row>
-          <Col xs={8} className="bas-bundle-name">
-            {bundle.name}
+          <Col xs={12} className="text-right bas-bundle-price-old">
+            {this.getPrice(bundle)}
           </Col>
-          <Col xs={4} className="text-right bas-bundle-price">
+          <Col xs={6} className="bas-bundle-discount">
+            <span>{bundle.discountPercentage} %</span>
+          </Col>
+          <Col xs={6} className="text-right bas-bundle-price">
             <Button
               size="sm"
               color="light"
@@ -50,7 +80,7 @@ export default class BundleItem extends Component {
                   <FontAwesomeIcon icon={faCheck} /> <FontAwesomeIcon icon={faShoppingCart} />
                 </React.Fragment>
               ) : (
-                bundle.discountPercentage
+                this.getPriceWithDiscount(bundle)
               )}
             </Button>
           </Col>
@@ -59,15 +89,3 @@ export default class BundleItem extends Component {
     );
   }
 }
-
-// export default props => (
-//   <div className="bas-bundle-item" onClick={() => History.push(`/bundles/${props.bundle._id}`)}>
-//     <Row>
-//       <Col>Image</Col>
-//     </Row>
-//     <Row>
-//       <Col>{props.bundle.name}</Col>
-//       <Col>{props.bundle.discountPercentage}</Col>
-//     </Row>
-//   </div>
-// );

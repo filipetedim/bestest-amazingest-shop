@@ -4,14 +4,17 @@ import { Row, Col } from 'reactstrap';
 // Theme
 import './style.scss';
 
-export default () => (
-  <div className="bas-bundle-item">
+// Utils
+import History from '../../utils/history';
+
+export default props => (
+  <div className="bas-bundle-item" onClick={() => History.push(`/bundles/${props.bundle._id}`)}>
     <Row>
       <Col>Image</Col>
     </Row>
     <Row>
-      <Col>Name</Col>
-      <Col>Price</Col>
+      <Col>{props.bundle.name}</Col>
+      <Col>{props.bundle.discountPercentage}</Col>
     </Row>
   </div>
 );

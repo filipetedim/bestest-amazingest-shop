@@ -20,7 +20,7 @@ const validatePrice = body('price')
   .isEmpty()
   .withMessage('Price is required')
   .isNumeric()
-  .withMessage('Price should be number')
+  .withMessage('Price should be a number')
   .custom(value => value >= 0)
   .withMessage('Price should be 0 or above');
 

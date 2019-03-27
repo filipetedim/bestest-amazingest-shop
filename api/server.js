@@ -13,11 +13,13 @@ const app = Express();
 const server = Http.Server(app);
 
 // Mongoose settings
+const connectionUrl =
+  process.env.NODE_ENV === 'test'
+    ? Config.getTestDatabaseConnectionUrl()
+    : Config.getDatabaseConnectionUrl();
 Mongoose.Promise = global.Promise;
 Mongoose.set('useFindAndModify', false);
-Mongoose.connect(Config.getDatabaseConnectionUrl(), {
-  useNewUrlParser: true,
-}).catch(err => {
+Mongoose.connect(connectionUrl, { useNewUrlParser: true }).catch(err => {
   throw Error(err);
 });
 
@@ -35,3 +37,5 @@ server.listen(
   process.env.PORT || Config.PORT,
   () => console.log(`Server started on port ${Config.PORT}`), // eslint-disable-line
 );
+
+module.exports = app;

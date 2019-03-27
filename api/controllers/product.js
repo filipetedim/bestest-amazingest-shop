@@ -20,7 +20,7 @@ const getProduct = (req, res) => {
   const { id } = req.params;
 
   Product.findById(id)
-    .then(result => res.status(200).json(result))
+    .then(result => res.status(result ? 200 : 404).json(result || {}))
     .catch(error => res.status(500).json({ message: 'Something went wrong', error }));
 };
 
@@ -53,7 +53,7 @@ const updateProduct = (req, res) => {
   const { name, price } = req.body;
 
   Product.findByIdAndUpdate(id, { name, price }, { new: true })
-    .then(result => res.status(200).json(result))
+    .then(result => res.status(result ? 200 : 404).json(result || {}))
     .catch(error => res.status(500).json({ message: 'Something went wrong', error }));
 };
 

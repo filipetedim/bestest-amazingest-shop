@@ -1,0 +1,6 @@
+{
+  "PORT": 3050,
+  "TOKEN_SECRET": "such_secret_many_hidden",
+  "TOKEN_VERSION": 1,
+  "TOKEN_EXPIRATION": "31d"
+}

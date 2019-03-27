@@ -1,0 +1,24 @@
+{
+  "env": {
+    "node": true,
+    "es6": true,
+    "mongo": true,
+    "worker": true,
+    "browser": true,
+    "mocha": true
+  },
+  "extends": ["airbnb-base", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "no-underscore-dangle": 0,
+    "func-names": 0,
+    "consistent-return": 0,
+    "prefer-promise-reject-errors": 0,
+    "prettier/prettier": "error",
+    "linebreak-style": 0,
+    "no-plusplus": 0,
+    "indent": ["error", 2],
+    "arrow-parens": "off",
+    "import/no-extraneous-dependencies": 0
+  }
+}

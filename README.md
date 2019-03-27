@@ -4,6 +4,11 @@ A prototype of the more bestest and most amazingest item shop in the whole unive
 
 Thanos bought his glove here.
 
+## Table of Contents
+
+* [Frontend README](https://github.com/filipetedim/bestest-amazingest-shop/blob/master/app/README.md)
+* [Backend README](https://github.com/filipetedim/bestest-amazingest-shop/blob/master/api/README.md)
+
 ## Frontend requirements
 
 ### Required
@@ -37,6 +42,7 @@ Thanos bought his glove here.
 
 ### Routes
 
+* /external
 * /products
 * /products/{id}
 * /bundles

@@ -18,8 +18,7 @@ const validateDiscountPercentage = body('discountPercentage')
   .isNumeric()
   .withMessage('Discount percentage should be a number')
   .custom(value => value >= 0 && value <= 100)
-  .withMessage('Discount percentage should be between 0 and 100 including')
-  .withMessage('Name should be a string');
+  .withMessage('Discount percentage should be between 0 and 100 including');
 
 const validateProducts = body('products')
   .not()

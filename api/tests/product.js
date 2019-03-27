@@ -1,4 +1,5 @@
 // Package dependencies
+const Mongoose = require('mongoose');
 const Chai = require('chai');
 const { expect } = require('chai');
 const ChaiHttp = require('chai-http');
@@ -7,12 +8,13 @@ const ChaiHttp = require('chai-http');
 const Server = require('../server');
 
 // Models
-const Product = require('../models/product');
+const Product = Mongoose.model('Product');
 
 // Chai
 Chai.should();
 Chai.use(ChaiHttp);
 
+// Helper
 const hasParamInValidationErrors = (array, param, msg) => {
   const error = array.find(element => element.param === param && element.msg === msg);
   return !!error;
@@ -362,7 +364,7 @@ describe('Endpoint -> Products', () => {
         });
     });
 
-    it('it should not post a product without name', done => {
+    it('it should not update a product without name', done => {
       const newProduct = new Product({ _externalId: 'Test ID', name: 'Test Product', price: 0 });
       newProduct.save((error, product) => {
         Chai.request(Server)
@@ -384,7 +386,7 @@ describe('Endpoint -> Products', () => {
       });
     });
 
-    it('it should not post a product with non-string name', done => {
+    it('it should not update a product with non-string name', done => {
       const newProduct = new Product({ _externalId: 'Test ID', name: 'Test Product', price: 0 });
       newProduct.save((error, product) => {
         Chai.request(Server)
@@ -406,7 +408,7 @@ describe('Endpoint -> Products', () => {
       });
     });
 
-    it('it should not post a product without price', done => {
+    it('it should not update a product without price', done => {
       const newProduct = new Product({ _externalId: 'Test ID', name: 'Test Product', price: 0 });
       newProduct.save((error, product) => {
         Chai.request(Server)
@@ -428,7 +430,7 @@ describe('Endpoint -> Products', () => {
       });
     });
 
-    it('it should not post a product with non-number price', done => {
+    it('it should not update a product with non-number price', done => {
       const newProduct = new Product({ _externalId: 'Test ID', name: 'Test Product', price: 0 });
       newProduct.save((error, product) => {
         Chai.request(Server)
@@ -450,7 +452,7 @@ describe('Endpoint -> Products', () => {
       });
     });
 
-    it('it should not post a product with price < 0', done => {
+    it('it should not update a product with price < 0', done => {
       const newProduct = new Product({ _externalId: 'Test ID', name: 'Test Product', price: 0 });
       newProduct.save((error, product) => {
         Chai.request(Server)

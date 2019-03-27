@@ -26,7 +26,9 @@ Endpoint tests are done by Mocha together with Chai/Chai-http. All validations a
 
 * Move to api folder with `cd api`
 * Run mocha with `npm run test`
-* Currently 23 tests were created
+* Currently 60 tests were created
+
+_May have gone overboard with tests_, but since it was lacking in my current repertoire, thought it was worth being thorough to get used to them.
 
 ## Database
 

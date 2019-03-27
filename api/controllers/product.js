@@ -37,7 +37,7 @@ const createProduct = (req, res) => {
 
   newProduct
     .save()
-    .then(result => res.status(201).json(result.toJSON()))
+    .then(result => res.status(201).json(result))
     .catch(error => res.status(500).json({ message: 'Something went wrong', error }));
 };
 
@@ -64,7 +64,7 @@ const deleteProduct = (req, res) => {
   const { id } = req.params;
 
   Product.findByIdAndDelete(id)
-    .then(() => res.status(200).json({}))
+    .then(result => res.status(result ? 200 : 404).json(result || {}))
     .catch(error => res.status(500).json({ message: 'Something went wrong', error }));
 };
 

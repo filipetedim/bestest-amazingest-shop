@@ -37,7 +37,7 @@ const createBundle = (req, res) => {
 
   newBundle
     .save()
-    .then(result => res.status(201).json(result.toJSON()))
+    .then(result => res.status(201).json(result))
     .catch(error => res.status(500).json({ message: 'Something went wrong', error }));
 };
 
@@ -64,7 +64,7 @@ const deleteBundle = (req, res) => {
   const { id } = req.params;
 
   Bundle.findByIdAndDelete(id)
-    .then(() => res.status(200).json({}))
+    .then(result => res.status(result ? 200 : 404).json(result || {}))
     .catch(error => res.status(500).json({ message: 'Something went wrong', error }));
 };
 

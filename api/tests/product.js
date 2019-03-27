@@ -472,4 +472,45 @@ describe('Endpoint -> Products', () => {
       });
     });
   });
+
+  /**
+   * Testing the /DELETE/:id route
+   */
+  describe('/GET/:id Products', () => {
+    it('it should delete a specific product by _id', done => {
+      const newProduct = new Product({ _externalId: 'Test ID', name: 'Test Product', price: 0 });
+      newProduct.save((error, product) => {
+        Chai.request(Server)
+          .delete(`/v1/products/${product._id}`)
+          .end((err, res) => {
+            res.should.have.a.status(200);
+            res.body.should.be.a('object');
+
+            done();
+          });
+      });
+    });
+
+    it('it should not delete a non existing product _id', done => {
+      Chai.request(Server)
+        .delete(`/v1/products/5c9ac9e181fef31f63c9d398`)
+        .end((err, res) => {
+          res.should.have.a.status(404);
+          res.body.should.be.a('object');
+
+          done();
+        });
+    });
+
+    it('it should not delete an invalid mongodb _id', done => {
+      Chai.request(Server)
+        .delete(`/v1/products/Test123`)
+        .end((err, res) => {
+          res.should.have.a.status(500);
+          res.body.should.be.a('object');
+
+          done();
+        });
+    });
+  });
 });

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Button, Spinner } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -16,8 +16,7 @@ export default class ProductItem extends Component {
   state = { addedToCart: false, product: {} };
 
   componentDidMount() {
-    const { product } = this.props;
-    this.setState({ product });
+    this.setState({ product: this.props.product });
   }
 
   componentWillReceiveProps(props) {
@@ -40,14 +39,18 @@ export default class ProductItem extends Component {
 
   render() {
     const { addedToCart, product } = this.state;
+
     return (
       <div
         className="mb-3 bas-product-item"
         onClick={() => History.push(`/products/${product._id}`)}
       >
+        {/* Image */}
         <Row>
           <Col>Image</Col>
         </Row>
+
+        {/* Details */}
         <Row>
           <Col xs={8} className="bas-product-name">
             {product.name}

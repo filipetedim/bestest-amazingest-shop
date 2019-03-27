@@ -5,7 +5,7 @@ import { Row, Col } from 'reactstrap';
 import './style.scss';
 
 // Components
-import ProductItem from '../../components/ProductItem';
+import ProductItem from '../../containers/ProductItem';
 import Spinner from '../../components/Spinner';
 import Error from '../../components/Error';
 

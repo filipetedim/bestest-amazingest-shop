@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Container, Jumbotron } from 'reactstrap';
+import { Container } from 'reactstrap';
 
 // Components
 import NotFoundPage from '../components/NotFoundPage';

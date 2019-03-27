@@ -1,0 +1,12 @@
+.bas-cart {
+  background: yellow;
+  display: inline-flex;
+  width: 200px;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    position: fixed; 
+  }
+}

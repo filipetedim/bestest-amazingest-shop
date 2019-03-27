@@ -8,6 +8,9 @@ import './style.scss';
 import History from '../../utils/history';
 
 export default class Header extends Component {
+  /**
+   * Loads a specific path in History.
+   */
   loadPage = path => History.push(path);
 
   render() {

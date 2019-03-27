@@ -10,9 +10,9 @@ import Routes from './Routes';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <React.Fragment>
         <Routes />
-      </div>
+      </React.Fragment>
     );
   }
 }

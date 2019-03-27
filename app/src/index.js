@@ -4,6 +4,7 @@ import * as serviceWorker from './serviceWorker';
 import { Router } from 'react-router-dom';
 
 // Theme
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
 // App

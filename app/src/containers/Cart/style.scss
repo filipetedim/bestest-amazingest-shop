@@ -1,7 +1,58 @@
 .bas-cart {
-  background: yellow;
   display: inline-flex;
   width: 200px;
+  vertical-align: text-top;
+  background: #FFF;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.45);
+  color: rgba(255,255,255,0.6);
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  .bas-cart-title {
+    background: #3B3E48;
+    color: rgba(255, 255, 255, 0.8);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+  }
+
+  .bas-cart-content {
+    color: #494f5c;
+    font-weight: 300;
+
+    .bas-cart-item {
+      padding-bottom: 10px;
+      padding-top: 10px;
+      text-transform: capitalize;
+
+      .bas-cart-item-quantity {
+        font-weight: 600;
+      }
+
+      .bas-cart-item-icon {
+        font-size: 1rem;
+
+        &:hover {
+          cursor: pointer;
+          color: #97b147;
+        }
+      }
+
+      &:hover {
+        background: #F7F7F7;
+      }
+    }
+  }
+
+  .bas-cart-footer {
+    background: #F7F7F7;
+    color: #8d8d8d;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+  }
   
   @media (max-width: 768px) {
     width: 100%;

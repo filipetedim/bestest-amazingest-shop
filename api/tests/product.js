@@ -60,6 +60,28 @@ describe('Endpoint -> Products', () => {
         });
     });
 
+    it('it should not post with a repeated _externalId', done => {
+      const newProduct = new Product({ _externalId: 'Test ID', name: 'Test Product', price: 0 });
+      newProduct.save(() => {
+        Chai.request(Server)
+          .post('/v1/products')
+          .send({ _externalId: 'Test ID', name: 'Test Product', price: 0 })
+          .end((err, res) => {
+            res.should.have.status(400);
+            res.body.should.be.a('object');
+            res.body.should.have.property('validationErrors');
+
+            const exists = hasParamInValidationErrors(
+              res.body.validationErrors,
+              '_externalId',
+              'External ID must be unique',
+            );
+            expect(exists).to.be.true;
+            done();
+          });
+      });
+    });
+
     it('it should not post a product without _externalId', done => {
       const product = { name: 'Test Product', price: 0 };
       Chai.request(Server)

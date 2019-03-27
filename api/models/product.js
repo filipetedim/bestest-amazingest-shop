@@ -15,6 +15,10 @@ ProductSchema.methods.toJSON = function() {
   };
 };
 
+ProductSchema.statics.findByExternalId = function(_externalId) {
+  return this.findOne({ _externalId }, (err, product) => product);
+};
+
 ProductSchema.virtual('created_at').get(() => this._id.getTimestamp());
 
 // Model

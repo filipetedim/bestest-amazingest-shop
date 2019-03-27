@@ -1,12 +1,21 @@
 // Package dependencies
 const { body } = require('express-validator/check');
 
+// Models
+const Product = require('../../models/product');
+
 const validateExternalID = body('_externalId')
   .not()
   .isEmpty()
   .withMessage('External ID is required')
   .isString()
-  .withMessage('External ID should be a string');
+  .withMessage('External ID should be a string')
+  .custom(value =>
+    Product.findByExternalId(value).then(product => {
+      return product ? Promise.reject('External ID already exists') : Promise.resolve();
+    }),
+  )
+  .withMessage('External ID must be unique');
 
 const validateName = body('name')
   .not()

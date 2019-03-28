@@ -44,5 +44,5 @@ Thanos bought his glove here.
     * Using IpApi for geolocation/currency
     * Using ExchangeRatesApi for exchange rates
     * Created a controller to manage both
-- \[ ] On product page show bundles
+- \[x] On product page show bundles
 - \[x] Additional functionalities

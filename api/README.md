@@ -7,6 +7,7 @@
 * [Testing](#testing)
 * [Database](#database)
 * [Development](#development)
+* [Documentation](#documentation)
 * [Issues](#issues)
 
 ## Install
@@ -40,6 +41,10 @@ MongoDB Atlas has a free forever tier sandbox that fits perfectly.
 ## Development
 
 * Prettier runs on pre-commit
+
+## Documentation
+
+The structure is quite self-explanatory. Controllers/Models/Middlewares/Routes/Tests.
 
 ## Issues
 

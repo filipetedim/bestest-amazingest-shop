@@ -8,11 +8,13 @@ Thanos bought his glove here.
 
 * [Frontend README](https://github.com/filipetedim/bestest-amazingest-shop/tree/master/app/README.md)
 * [Backend README](https://github.com/filipetedim/bestest-amazingest-shop/tree/master/api/README.md)
+* [Requirements done](#requirements)
 
-## Frontend requirements
+## Requirements
 
-### Required
+### Technical
 
+- \[x] Test
 * Main page to list products
   * Components:
     * Search: Filter automatically, add search query browser link for share/re-open

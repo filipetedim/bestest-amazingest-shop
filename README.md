@@ -40,7 +40,7 @@ Thanos bought his glove here.
 
 - \[x] Search and sort the front page
 - \[x] Add more details to products
-- \[ ] Should always see prices in local currency
+- \[x] Should always see prices in local currency
     * Using IpApi for geolocation/currency
     * Using ExchangeRatesApi for exchange rates
     * Created a controller to manage both

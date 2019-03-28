@@ -49,7 +49,7 @@ export default class Products extends Component {
     const { loading, errorProducts, errorBundles, products, bundles } = this.state;
 
     return (
-      <Container>
+      <Container style={{ display: 'flex' }}>
         <ContentWrapper>
           <Container>
             <BundlesGroup

@@ -15,6 +15,8 @@ Thanos bought his glove here.
 ### Technical
 
 - \[x] Majority of logic on client side
+    - \[x] Store frontend only does GETs to retrieve data
+    - \[x] All logic and Cart are handled on frontend
 - \[x] One of client side languages (JavaScript)
 - \[x] One of web app frameworks (React)
 - \[x] Any third party NPM libraries

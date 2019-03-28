@@ -6,8 +6,14 @@ import { faShoppingCart, faCheck } from '@fortawesome/free-solid-svg-icons';
 // Theme
 import './style.scss';
 
+// Components
+import Image from '../../components/Image';
+
 // Stores
 import CartStore from '../../stores/cartStore';
+
+// utils
+import ExtraDataImages from '../../utils/extraData';
 
 export default class BundleItem extends Component {
   state = { addedToCart: false, bundle: { products: [] } };
@@ -60,9 +66,8 @@ export default class BundleItem extends Component {
     return (
       <div className="mb-3 bas-bundle-item">
         {/* Image */}
-        <Col xs={12}>
-          <div className="bas-bundle-discount" />
-          Image
+        <Col xs={12} className="pl-0 pr-0">
+          <Image src={ExtraDataImages[bundle._id]} />
         </Col>
 
         {/* Details */}

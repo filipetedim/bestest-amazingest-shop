@@ -68,10 +68,22 @@ const deleteBundle = (req, res) => {
     .catch(error => res.status(500).json({ message: 'Something went wrong', error }));
 };
 
+/**
+ * Gets all bundles that contain a specific product id.
+ */
+const getBundlesWithProductId = (req, res) => {
+  const { id } = req.params;
+
+  Bundle.find({ products: id })
+    .then(result => res.status(200).json(result))
+    .catch(error => res.status(500).json({ message: 'Something went wrong', error }));
+};
+
 module.exports = {
   getBundles,
   getBundle,
   createBundle,
   updateBundle,
   deleteBundle,
+  getBundlesWithProductId,
 };

@@ -6,11 +6,15 @@ import { faShoppingCart, faCheck } from '@fortawesome/free-solid-svg-icons';
 // Theme
 import './style.scss';
 
+// Components
+import Image from '../../components/Image';
+
 // Stores
 import CartStore from '../../stores/cartStore';
 
 // Utils
 import History from '../../utils/history';
+import ExtraDataImages from '../../utils/extraData';
 
 export default class ProductItem extends Component {
   state = { addedToCart: false, product: {} };
@@ -46,7 +50,9 @@ export default class ProductItem extends Component {
         onClick={() => History.push(`/products/${product._id}`)}
       >
         {/* Image */}
-        <Col xs={12}>Image</Col>
+        <Col xs={12} className="p-0">
+          <Image src={ExtraDataImages[product._id]} />
+        </Col>
 
         {/* Details */}
         <Row>

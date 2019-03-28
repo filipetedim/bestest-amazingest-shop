@@ -114,8 +114,8 @@ class Cart extends Component {
     );
 
     return (
-      <div className="bas-cart">
-        <Container fluid>
+      <div className=" mt-4">
+        <Container className="bas-cart" fluid>
           {/* Header */}
           <Row className="bas-cart-title" onClick={this.toggleCart}>
             <Col>
@@ -167,8 +167,8 @@ class Cart extends Component {
                 <Col xs={12} key={i} className="bas-cart-footer-discount">
                   {bundle.quantity}x {bundle.name}
                 </Col>
-                <Col xs={12} className="bar-cart-footer-discount-price">
-                  <span className="float-right ">- {this.getBundleTotalDiscount(bundle)}</span>
+                <Col xs={12} className="bar-cart-footer-discount-price text-right">
+                  - {this.getBundleTotalDiscount(bundle)}
                 </Col>
               </React.Fragment>
             ))}

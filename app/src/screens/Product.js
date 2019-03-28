@@ -4,7 +4,7 @@ import { Container } from 'reactstrap';
 // Containers
 import Cart from '../containers/Cart';
 import BundlesGroup from '../containers/Bundles';
-import ProductsGroup from '../containers/Products';
+import ProductDetails from '../containers/ProductDetails';
 
 // Components
 import ContentWrapper from '../components/ContentWrapper';
@@ -17,13 +17,16 @@ import ProductService from '../services/productService';
 import Config from '../utils/config';
 
 export default class Products extends Component {
-  state = { loading: true, errorProducts: null, errorBundles: null, products: [], bundles: [] };
+  state = { loading: true, errorProducts: null, errorBundles: null, product: {}, bundles: [] };
 
   async componentDidMount() {
     this.setState({ loading: true });
 
-    await this.getProducts();
-    await this.getBundles();
+    const { productId } = this.props.match.params;
+    console.log(productId);
+
+    await this.getProduct(productId);
+    await this.getBundlesWithProduct(productId);
 
     setTimeout(() => {
       this.setState({ loading: false });
@@ -31,34 +34,39 @@ export default class Products extends Component {
   }
 
   /**
-   * Loads all the existing products.
+   * Loads a specific product.
    */
-  getProducts = async () =>
-    await ProductService.getProducts()
-      .then(products => this.setState({ products }))
+  getProduct = async productId =>
+    await ProductService.getProduct(productId)
+      .then(product => this.setState({ product }))
       .catch(() => this.setState({ errorProducts: true }));
   /**
-   * Loads all the existing bundles.
+   * Loads all the existing that have a specific product.
    */
-  getBundles = async () =>
-    await BundleService.getBundles()
+  getBundlesWithProduct = async productId =>
+    await BundleService.getBundlesWithProduct(productId)
       .then(bundles => this.setState({ bundles }))
       .catch(() => this.setState({ errorBundles: true }));
 
   render() {
-    const { loading, errorProducts, errorBundles, products, bundles } = this.state;
+    const { loading, errorProducts, errorBundles, product, bundles } = this.state;
 
     return (
-      <Container>
+      <Container style={{ display: 'flex' }}>
         <ContentWrapper>
           <Container>
-            <BundlesGroup
+            <ProductDetails
               loading={loading}
               error={errorBundles}
               bundles={bundles}
-              products={products}
+              product={product}
             />
-            <ProductsGroup loading={loading} error={errorProducts} products={products} />
+            {/* <BundlesGroup
+              loading={loading}
+              error={errorBundles}
+              bundles={bundles}
+              product={product}
+            /> */}
           </Container>
         </ContentWrapper>
         <Cart bundles={bundles} />

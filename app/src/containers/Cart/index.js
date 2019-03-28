@@ -16,9 +16,6 @@ import './style.scss';
 // Stores
 import CartStore from '../../stores/cartStore';
 
-// Utils
-import History from '../../utils/history';
-
 class Cart extends Component {
   state = { toggle: false, bundles: [] };
 
@@ -32,28 +29,71 @@ class Cart extends Component {
   toggleCart = () => this.setState({ toggle: !this.state.toggle });
 
   /**
-   * Groups the cart.
+   * Gets the available discounts given the current products in the cart.
    */
-  groupCart = () => {
-    const newCart = CartStore.cart.reduce((cart, product) => {
-      const exists = cart.filter(cartItem => cartItem._id.toString() === product._id.toString())[0];
+  getAvailableDiscounts = () => {
+    const { bundles } = this.state;
 
-      if (exists) {
-        exists.quantity++;
-      } else {
-        cart.push({ ...product, quantity: 1 });
-      }
+    // Deep clone
+    const productCartCopy = JSON.parse(JSON.stringify(CartStore.cart));
+    const bundleCopy = JSON.parse(JSON.stringify(bundles));
+    const bundleCart = [];
 
-      return cart;
-    }, []);
-    return newCart;
+    bundleCopy.forEach(bundle => {
+      let indexesToRemove;
+      let addedToBundle;
+      do {
+        indexesToRemove = [];
+        addedToBundle = false;
+
+        // Searches cart to see if product exists and store its index
+        bundle.products.forEach(productId => {
+          for (let i = productCartCopy.length - 1; i > -1; i--) {
+            if (productCartCopy[i]._id.toString() === productId.toString()) {
+              indexesToRemove.push(i);
+              break;
+            }
+          }
+        });
+
+        // If found as many indexes as products in a bundle, add that bundle and remove from cart clone
+        if (indexesToRemove.length === bundle.products.length) {
+          indexesToRemove.sort((a, b) => a - b);
+          do {
+            const indexToRemove = indexesToRemove.pop();
+            productCartCopy.splice(indexToRemove, 1);
+          } while (indexesToRemove.length > 0);
+
+          const exists = bundleCart.filter(
+            bundleItem => bundleItem._id.toString() === bundle._id.toString()
+          )[0];
+
+          if (exists) {
+            exists.quantity++;
+          } else {
+            bundleCart.push({ ...bundle, quantity: 1 });
+          }
+
+          addedToBundle = true;
+        }
+      } while (addedToBundle);
+    });
+
+    return bundleCart;
   };
 
   /**
-   * Gets the total price. This is where the calculations for the bundle happen.
+   * Gets the total discount value for a bundle depending on quantity.
    */
-  getTotalPrice = () =>
-    CartStore.cart.reduce((totalPrice, product) => totalPrice + product.price, 0);
+  getBundleTotalDiscount = bundle => {
+    const bundlePrice = bundle.products.reduce(
+      (price, productId) => price + CartStore.getProductById(productId).price,
+      0
+    );
+
+    const discountPrice = (bundlePrice * (bundle.discountPercentage || 0)) / 100;
+    return (discountPrice * bundle.quantity).toFixed(2);
+  };
 
   /**
    * Link to checkout.
@@ -65,6 +105,13 @@ class Cart extends Component {
 
   render() {
     const { toggle } = this.state;
+    const bundleCart = this.getAvailableDiscounts();
+    const productGroupedChart = CartStore.getGroupedCart();
+    const totalPrice = CartStore.getTotalPrice();
+    const totalDiscountPrice = bundleCart.reduce(
+      (price, bundle) => this.getBundleTotalDiscount(bundle),
+      0
+    );
 
     return (
       <div className="bas-cart">
@@ -81,12 +128,12 @@ class Cart extends Component {
                 <FontAwesomeIcon size="1x" icon={faChevronUp} />
               )}
             </Col>
-            <Col className="text-right bar-cart-title-total">Total: {this.getTotalPrice()}</Col>
+            <Col className="text-right bar-cart-title-total">Total: {totalPrice}</Col>
           </Row>
 
           {/* Content */}
           <Row className={`bas-cart-content ${toggle && 'show'}`}>
-            {this.groupCart(CartStore.cart).map((product, i) => (
+            {productGroupedChart.map((product, i) => (
               <Col key={i} xs={12} className="bas-cart-item">
                 <div>{product.name}</div>
                 <Row>
@@ -115,8 +162,20 @@ class Cart extends Component {
 
           {/* Price and View Price */}
           <Row className={`bas-cart-footer ${toggle && 'show'}`}>
-            <Col className="bar-cart-footer-total">Total</Col>
-            <Col className="text-right bar-cart-footer-total">{this.getTotalPrice()}</Col>
+            {bundleCart.map((bundle, i) => (
+              <React.Fragment key={i}>
+                <Col xs={12} key={i} className="bas-cart-footer-discount">
+                  {bundle.quantity}x {bundle.name}
+                </Col>
+                <Col xs={12} className="bar-cart-footer-discount-price">
+                  <span className="float-right ">- {this.getBundleTotalDiscount(bundle)}</span>
+                </Col>
+              </React.Fragment>
+            ))}
+            <Col className="mt-3 bar-cart-footer-total">Total</Col>
+            <Col className="mt-3 text-right bar-cart-footer-total">
+              {totalPrice - totalDiscountPrice}
+            </Col>
             <Col xs={12} className="mt-2">
               <Button color="warning" block onClick={this.goToCheckout}>
                 Checkout

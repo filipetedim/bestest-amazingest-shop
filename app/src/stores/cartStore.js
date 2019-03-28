@@ -39,6 +39,33 @@ class CartStore {
     this.cart = [];
     Cookies.set('cart', []);
   };
+
+  /**
+   * Returns a product by its ID.
+   */
+  getProductById = productId =>
+    this.cart.filter(item => item._id.toString() === productId.toString())[0];
+
+  /**
+   * Returns the total price in the cart.
+   */
+  getTotalPrice = () => this.cart.reduce((totalPrice, product) => totalPrice + product.price, 0);
+
+  /**
+   * Returns the grouped cart by product and quantity.
+   */
+  getGroupedCart = () =>
+    this.cart.reduce((cart, product) => {
+      const exists = cart.filter(cartItem => cartItem._id.toString() === product._id.toString())[0];
+
+      if (exists) {
+        exists.quantity++;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+
+      return cart;
+    }, []);
 }
 
 export default new CartStore();

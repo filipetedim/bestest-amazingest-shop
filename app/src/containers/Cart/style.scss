@@ -91,6 +91,17 @@
     padding-bottom: 20px;
     text-transform: uppercase;
 
+    .bas-cart-footer-discount {
+      text-transform: capitalize;
+      font-weight: 500;
+    }
+
+    .bar-cart-footer-discount-price {
+      margin-top: -3px;
+      font-weight: 300;
+      font-size: 0.8rem;
+    }
+
     @media (max-width: 768px) {
       display: none;
 

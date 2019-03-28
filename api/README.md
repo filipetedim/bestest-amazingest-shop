@@ -1,4 +1,4 @@
-# Bestest Amazingest Shop API
+# NodeJS API
 
 ## Table of Contents
 

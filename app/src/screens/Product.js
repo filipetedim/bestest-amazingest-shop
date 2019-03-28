@@ -3,7 +3,7 @@ import { Container } from 'reactstrap';
 
 // Containers
 import Cart from '../containers/Cart';
-// import BundlesGroup from '../containers/Bundles';
+import BundlesGroup from '../containers/Bundles';
 import ProductDetails from '../containers/ProductDetails';
 
 // Components
@@ -17,16 +17,22 @@ import ProductService from '../services/productService';
 import Config from '../utils/config';
 
 export default class Products extends Component {
-  state = { loading: true, errorProducts: null, errorBundles: null, product: {}, bundles: [] };
+  state = {
+    loading: true,
+    errorProducts: null,
+    errorBundles: null,
+    product: {},
+    bundles: [],
+    getBundlesByProductId: [],
+  };
 
   async componentDidMount() {
     this.setState({ loading: true });
 
     const { productId } = this.props.match.params;
-    console.log(productId);
-
     await this.getProduct(productId);
-    await this.getBundlesWithProduct(productId);
+    await this.getBundles();
+    await this.getBundlesByProductId(productId);
 
     setTimeout(() => {
       this.setState({ loading: false });
@@ -40,33 +46,45 @@ export default class Products extends Component {
     await ProductService.getProduct(productId)
       .then(product => this.setState({ product }))
       .catch(() => this.setState({ errorProducts: true }));
+
   /**
-   * Loads all the existing that have a specific product.
+   * Loads all the bundles.
    */
-  getBundlesWithProduct = async productId =>
-    await BundleService.getBundlesWithProduct(productId)
+  getBundles = async () =>
+    await BundleService.getBundles()
       .then(bundles => this.setState({ bundles }))
       .catch(() => this.setState({ errorBundles: true }));
 
+  /**
+   * Loads all the existing that have a specific product.
+   */
+  getBundlesByProductId = async productId =>
+    await BundleService.getBundlesByProductId(productId)
+      .then(getBundlesByProductId => this.setState({ getBundlesByProductId }))
+      .catch(() => this.setState({ errorBundles: true }));
+
   render() {
-    const { loading, errorProducts, errorBundles, product, bundles } = this.state;
+    const {
+      loading,
+      errorProducts,
+      errorBundles,
+      product,
+      bundles,
+      getBundlesByProductId,
+    } = this.state;
 
     return (
       <Container style={{ display: 'flex' }}>
         <ContentWrapper>
           <Container>
-            <ProductDetails
-              loading={loading}
-              error={errorProducts}
-              bundles={bundles}
-              product={product}
-            />
-            {/* <BundlesGroup
+            <ProductDetails loading={loading} error={errorProducts} product={product} />
+            <BundlesGroup
               loading={loading}
               error={errorBundles}
-              bundles={bundles}
-              product={product}
-            /> */}
+              title="ASSOCIATED BUNDLES"
+              emptyMessage="There are currently no bundles that include this product."
+              bundles={getBundlesByProductId}
+            />
           </Container>
         </ContentWrapper>
         <Cart bundles={bundles} />

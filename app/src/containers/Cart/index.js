@@ -52,7 +52,7 @@ class Cart extends Component {
         // Searches cart to see if product exists and store its index
         for (let bundleIndex = 0; bundleIndex < bundle.products.length; bundleIndex++) {
           for (let i = productCartCopy.length - 1; i > -1; i--) {
-            if (productCartCopy[i]._id.toString() === bundle.products[bundleIndex].toString()) {
+            if (productCartCopy[i]._id.toString() === bundle.products[bundleIndex]._id.toString()) {
               indexesToRemove.push(i);
               break;
             }
@@ -89,10 +89,7 @@ class Cart extends Component {
    * Returns the total discount value for a bundle depending on quantity.
    */
   getBundleTotalDiscount = bundle => {
-    const bundlePrice = bundle.products.reduce(
-      (price, productId) => price + CartStore.getProductById(productId).price,
-      0
-    );
+    const bundlePrice = bundle.products.reduce((price, product) => price + product.price, 0);
 
     const discountPrice = (bundlePrice * (bundle.discountPercentage || 0)) / 100;
     return (discountPrice * bundle.quantity).toFixed(2);
@@ -140,7 +137,7 @@ class Cart extends Component {
               <Col key={i} xs={12} className="bas-cart-item">
                 <div>{product.name}</div>
                 <Row>
-                  <Col xs={8}>
+                  <Col xs={7}>
                     <FontAwesomeIcon
                       size="1x"
                       icon={faMinus}
@@ -155,7 +152,7 @@ class Cart extends Component {
                       className="bas-cart-item-icon"
                     />
                   </Col>
-                  <Col xs={4} className="text-right">
+                  <Col xs={5} className="text-right">
                     {Currency.get(product.price * product.quantity)}
                   </Col>
                 </Row>

@@ -52,12 +52,7 @@ export default class Products extends Component {
       <Container style={{ display: 'flex' }}>
         <ContentWrapper>
           <Container>
-            <BundlesGroup
-              loading={loading}
-              error={errorBundles}
-              bundles={bundles}
-              products={products}
-            />
+            <BundlesGroup loading={loading} error={errorBundles} bundles={bundles} />
             <ProductsGroup loading={loading} error={errorProducts} products={products} />
           </Container>
         </ContentWrapper>

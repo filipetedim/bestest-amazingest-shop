@@ -29,15 +29,14 @@ export default {
    * Returns the correct string currency for the given value.
    */
   get: value => {
+    if (!value) {
+      return '';
+    }
     const currency = Cookies.get('bas_currency') || 'USD';
     const language = Cookies.get('bas_language') || 'en-US';
     const exchangeRates = Cookies.getJSON('bas_exchangeRates') || null;
 
-    if (currency === 'USD') {
-      return value.toLocaleString(language, { style: 'currency', currency });
-    }
-
-    if (!exchangeRates) {
+    if (!exchangeRates || currency === 'USD') {
       return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
     }
 

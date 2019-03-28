@@ -48,8 +48,7 @@ export default class Products extends Component {
           </Col>
           <Col xs={8} md={3} className="pl-0 pr-0 mt-4 mb-4">
             <Input
-              className="bas-products-search"
-              size="sm"
+              className="form-control-sm bas-products-search"
               placeholder="Search for a product name..."
               value={search}
               onChange={this.onSearchChange}

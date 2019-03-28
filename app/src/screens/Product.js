@@ -3,7 +3,7 @@ import { Container } from 'reactstrap';
 
 // Containers
 import Cart from '../containers/Cart';
-import BundlesGroup from '../containers/Bundles';
+// import BundlesGroup from '../containers/Bundles';
 import ProductDetails from '../containers/ProductDetails';
 
 // Components
@@ -57,7 +57,7 @@ export default class Products extends Component {
           <Container>
             <ProductDetails
               loading={loading}
-              error={errorBundles}
+              error={errorProducts}
               bundles={bundles}
               product={product}
             />

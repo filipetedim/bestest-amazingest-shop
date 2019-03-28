@@ -29,7 +29,7 @@ class Cart extends Component {
   toggleCart = () => this.setState({ toggle: !this.state.toggle });
 
   /**
-   * Gets the available discounts given the current products in the cart.
+   * Returns the available discounts given the current products in the cart.
    */
   getAvailableDiscounts = () => {
     const { bundles } = this.state;
@@ -83,7 +83,7 @@ class Cart extends Component {
   };
 
   /**
-   * Gets the total discount value for a bundle depending on quantity.
+   * Returns the total discount value for a bundle depending on quantity.
    */
   getBundleTotalDiscount = bundle => {
     const bundlePrice = bundle.products.reduce(

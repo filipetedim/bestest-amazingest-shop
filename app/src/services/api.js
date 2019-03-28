@@ -52,8 +52,23 @@ async function createRequest({ method = 'GET', endpoint = '' }) {
   return fetch(url, params);
 }
 
+async function createOutsiderRequest({ method = 'GET', url = '' }) {
+  const params = {
+    method,
+    mode: 'cors',
+  };
+
+  return fetch(url, params);
+}
+
 export async function api(params) {
   return createRequest(params)
+    .then(checkStatus)
+    .then(parseJSON);
+}
+
+export async function outsiderApi(params) {
+  return createOutsiderRequest(params)
     .then(checkStatus)
     .then(parseJSON);
 }

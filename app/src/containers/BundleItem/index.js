@@ -27,7 +27,7 @@ export default class BundleItem extends Component {
   }
 
   /**
-   * Gets the price of the bundle.
+   * Returns the price of the bundle.
    */
   getPrice = bundle => bundle.products.reduce((price, product) => price + product.price, 0);
 
@@ -39,7 +39,7 @@ export default class BundleItem extends Component {
     (this.getPrice(bundle) * (100 - bundle.discountPercentage || 0)) / 100;
 
   /**
-   * Gets a string with all the product names
+   * Returns a string with all the product names
    */
   getProductNames = bundle =>
     bundle.products.reduce(

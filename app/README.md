@@ -1,4 +1,4 @@
-# Bestest Amazingest Shop API
+# React
 
 ## Table of Contents
 

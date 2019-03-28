@@ -25,7 +25,7 @@ const hasParamInValidationErrors = (array, param, msg) => {
 let productId;
 
 /* eslint-disable no-unused-expressions */
-describe('Endpoint -> Products', async () => {
+describe('Endpoint -> Bundles', async () => {
   /**
    * Create global product
    */
@@ -331,7 +331,7 @@ describe('Endpoint -> Products', async () => {
             res.body.should.have.property('discountPercentage');
             res.body.should.have.property('products');
             expect(res.body.products.length).to.be.equal(1);
-            expect(res.body.products[0]).to.be.equal(productId);
+            expect(res.body.products[0]._id).to.be.equal(productId);
 
             done();
           });
@@ -342,7 +342,7 @@ describe('Endpoint -> Products', async () => {
       Chai.request(Server)
         .get(`/v1/bundles/5c9ac9e181fef31f63c9d398`)
         .end((err, res) => {
-          res.should.have.a.status(404);
+          res.should.have.a.status(500);
           res.body.should.be.a('object');
 
           done();
@@ -388,8 +388,8 @@ describe('Endpoint -> Products', async () => {
             expect(res.body.name).to.be.equal('Test Bundle 2');
             expect(res.body.discountPercentage).to.be.equal(20);
             expect(res.body.products.length).to.be.equal(2);
-            expect(res.body.products[0]).to.be.equal(productId);
-            expect(res.body.products[1]).to.be.equal(productId);
+            expect(res.body.products[0]._id).to.be.equal(productId);
+            expect(res.body.products[1]._id).to.be.equal(productId);
             done();
           });
       });
@@ -404,7 +404,7 @@ describe('Endpoint -> Products', async () => {
           products: [productId],
         })
         .end((err, res) => {
-          res.should.have.a.status(404);
+          res.should.have.a.status(500);
           res.body.should.be.a('object');
           done();
         });

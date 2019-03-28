@@ -1,0 +1,122 @@
+.bas-cart {
+  width: 240px;
+  background: #FFF;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.45);
+  color: rgba(255,255,255,0.6);
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  .bas-cart-title {
+    background: #3B3E48;
+    color: rgba(255, 255, 255, 0.8);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      cursor: pointer;
+    }
+
+    .bar-cart-title-toggle {
+      display: none;
+
+      @media (max-width: 768px) {
+        display: block;
+      }
+    }
+
+    .bar-cart-title-total {
+      display: none;
+
+      @media (max-width: 768px) {
+        display: block;
+      }
+    }
+  }
+
+  .bas-cart-content {
+    color: #494f5c;
+    font-weight: 300;
+
+    @media (max-width: 768px) {
+      display: none;
+
+      &.show {
+        display: block;
+      }
+    }
+
+    .bas-cart-item {
+      padding-bottom: 10px;
+      padding-top: 10px;
+      text-transform: capitalize;
+
+      .bas-cart-item-quantity {
+        font-weight: 600;
+        margin-right: 20px !important;
+
+        @media (max-width: 768px) {
+          margin-right: 40px !important;
+        }
+      }
+
+      .bas-cart-item-icon {
+        font-size: 1rem;
+        margin-right: 15px;
+
+        &:hover {
+          cursor: pointer;
+          color: #97b147;
+        }
+
+        @media (max-width: 768px) {
+          margin-right: 30px;
+        }
+      }
+
+      &:hover {
+        background: #F7F7F7;
+      }
+    }
+  }
+
+  .bas-cart-footer {
+    background: #F7F7F7;
+    color: #8d8d8d;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+
+    .bas-cart-footer-discount {
+      text-transform: capitalize;
+      font-weight: 500;
+    }
+
+    .bar-cart-footer-discount-price {
+      margin-top: -3px;
+      font-weight: 300;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
+
+      &.show {
+        display: block;
+      }
+
+      .bar-cart-footer-total {
+        display: none;
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    position: fixed; 
+  }
+}

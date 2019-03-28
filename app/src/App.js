@@ -1,28 +1,26 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+
+// Routes
+import Routes from './Routes';
+
+// Containers
+import Header from './containers/Header';
+
+// Utils
+import Currency from './utils/currencyParser';
 
 class App extends Component {
   render() {
+    Currency.setCurrency();
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <React.Fragment>
+        <Header />
+        <Routes />
+      </React.Fragment>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

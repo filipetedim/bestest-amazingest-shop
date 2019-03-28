@@ -8,6 +8,7 @@ const {
   createBundle,
   updateBundle,
   deleteBundle,
+  getBundlesWithProductId,
 } = require('../controllers/bundle');
 
 // Middlewares
@@ -18,6 +19,7 @@ const router = express.Router();
 
 // Endpoints
 router.get('/', getBundles);
+router.get('/product/:id', getBundlesWithProductId);
 router.get('/:id', getBundle);
 router.post('/', validateCreateProps, createBundle);
 router.put('/:id', validateUpdateProps, updateBundle);

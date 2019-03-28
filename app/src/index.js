@@ -1,10 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Router } from 'react-router-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Theme
+import 'typeface-roboto';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.scss';
+
+// App
+import App from './App';
+
+// Utils
+import History from './utils/history';
+
+ReactDOM.render(
+  <Router history={History}>
+    <App />
+  </Router>,
+  document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

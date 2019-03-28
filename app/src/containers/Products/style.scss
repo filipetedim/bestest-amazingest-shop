@@ -1,0 +1,50 @@
+.bas-products-title {
+  color: #d8d8da;
+}
+
+.bas-products-search,
+.bas-products-search:active, 
+.bas-products-search:focus {
+  background: #7D828A;
+  font-weight: 600;
+  color: #d8d8da;
+  border: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0
+}
+
+.bas-products-search::placeholder {
+  color: #4F555E;
+}
+
+.bas-products-item {
+  -webkit-animation: move 0.5s ease-out;
+  animation: move 0.5s ease-out;
+}
+
+@-webkit-keyframes move {
+  0% {margin-top: 10px;}
+ 100% {margin-top: 0px;}
+}
+
+@keyframes move {
+  0% {margin-top: 10px;}
+ 100% {margin-top: 0px;}
+}
+
+.bas-products-filter {
+  color: #d8d8da;
+  background: #3B3E48;
+  border-color: #3B3E48;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  &:hover {
+    background: #3B3E48;
+    border-color: #3B3E48;
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+}

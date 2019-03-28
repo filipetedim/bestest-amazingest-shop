@@ -1,0 +1,45 @@
+.bas-product-item {
+  background: #2F333D;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.45);
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  .bas-product-name {
+    padding: 10px 0 10px 30px;
+    display: flex;
+    align-items: center;
+    line-height: 15px;
+  }
+
+  .bas-product-price {
+    padding: 10px 30px 10px 0;
+
+    .bas-product-price-button {
+      padding-left: 0.9rem;
+      padding-right: 0.9rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+
+      transition-duration: 0.1s;
+      transition-property: background-color, border, color, box-shadow, text-shadow;
+      transition-timing-function: ease-in-out;
+
+      &.loading {
+        color: white;
+        border-color: #97b147;
+        background: #97b147;
+        text-shadow: 0.1em 0.1em 0.1em rgba(0,0,0,0.65);
+      }
+
+      &:hover {
+        color: white;
+        border-color: #97b147;
+        background: #97b147;
+        text-shadow: 0.1em 0.1em 0.1em rgba(0,0,0,0.65);
+      }
+    }
+  }
+}

@@ -28,6 +28,7 @@ export default class Products extends Component {
     setTimeout(() => {
       this.setState({ loading: false });
     }, Config.SPINNER_TIME);
+    window.scrollTo(0, 0); // I hate doing this but it's late
   }
 
   /**

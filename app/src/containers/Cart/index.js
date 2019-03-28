@@ -114,7 +114,7 @@ class Cart extends Component {
     );
 
     return (
-      <div className=" mt-4">
+      <div className=" mt-4" style={{ marginBottom: 500 }}>
         <Container className="bas-cart" fluid>
           {/* Header */}
           <Row className="bas-cart-title" onClick={this.toggleCart}>

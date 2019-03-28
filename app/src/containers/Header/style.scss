@@ -1,0 +1,20 @@
+.bas-header {
+  background: #2F333D;
+  padding: 1rem 0 1rem 0;
+  margin-bottom: 0;
+
+  img  {
+    max-width: calc(100vw - 150px)
+  }
+}
+
+.bas-menu {
+  cursor: pointer;
+  color:#d8d8da;
+  font-weight: 700;
+  font-size: 1.2rem;
+
+  &:hover {
+    color: #f7f7f7;
+  }
+}

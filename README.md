@@ -28,7 +28,7 @@ Thanos bought his glove here.
 ### Minimum
 
 - \[x] Front page with list of items to purchase
-- \[ ] Access a detailed product page
+- \[x] Access a detailed product page
 - \[x] All pages include styling
 - \[x] Access my basket at any time
     - \[x] Add items from front page or product page
@@ -38,10 +38,10 @@ Thanos bought his glove here.
 
 ### Bonus
 
-- \[ ] Search and sort the front page
-- \[ ] Add more details to products
+- \[x] Search and sort the front page
+- \[x] Add more details to products
 - \[ ] Should always see prices in local currency
     - \[ ] Browser language settings
     - \[ ] Using free API
 - \[ ] On product page show bundles
-- \[ ] Additional functionalities
+- \[x] Additional functionalities

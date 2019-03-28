@@ -41,7 +41,8 @@ Thanos bought his glove here.
 - \[x] Search and sort the front page
 - \[x] Add more details to products
 - \[ ] Should always see prices in local currency
-    - \[ ] Browser language settings
-    - \[ ] Using free API
+    * Using IpApi for geolocation/currency
+    * Using ExchangeRatesApi for exchange rates
+    * Created a controller to manage both
 - \[ ] On product page show bundles
 - \[x] Additional functionalities

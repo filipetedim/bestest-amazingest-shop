@@ -15,6 +15,7 @@ import CartStore from '../../stores/cartStore';
 // Utils
 import History from '../../utils/history';
 import ExtraDataImages from '../../utils/extraData';
+import Currency from '../../utils/currencyParser';
 
 export default class ProductItem extends Component {
   state = { addedToCart: false, product: {} };
@@ -56,10 +57,10 @@ export default class ProductItem extends Component {
 
         {/* Details */}
         <Row>
-          <Col xs={7} className="bas-product-name">
+          <Col xs={6} className="bas-product-name">
             {product.name}
           </Col>
-          <Col xs={5} className="text-right bas-product-price">
+          <Col xs={6} className="text-right bas-product-price">
             <Button
               size="sm"
               color="light"
@@ -71,7 +72,7 @@ export default class ProductItem extends Component {
                   <FontAwesomeIcon icon={faCheck} /> <FontAwesomeIcon icon={faShoppingCart} />
                 </React.Fragment>
               ) : (
-                product.price
+                Currency.get(product.price)
               )}
             </Button>
           </Col>

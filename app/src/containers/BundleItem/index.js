@@ -14,6 +14,7 @@ import CartStore from '../../stores/cartStore';
 
 // utils
 import ExtraDataImages from '../../utils/extraData';
+import Currency from '../../utils/currencyParser';
 
 export default class BundleItem extends Component {
   state = { addedToCart: false, bundle: { products: [] } };
@@ -79,7 +80,7 @@ export default class BundleItem extends Component {
         </Col>
         <Row>
           <Col xs={12} className="text-right bas-bundle-price-old">
-            {this.getPrice(bundle)}
+            {Currency.get(this.getPrice(bundle))}
           </Col>
           <Col xs={6} className="bas-bundle-discount">
             <span>{bundle.discountPercentage} %</span>
@@ -96,7 +97,7 @@ export default class BundleItem extends Component {
                   <FontAwesomeIcon icon={faCheck} /> <FontAwesomeIcon icon={faShoppingCart} />
                 </React.Fragment>
               ) : (
-                this.getPriceWithDiscount(bundle)
+                Currency.get(this.getPriceWithDiscount(bundle))
               )}
             </Button>
           </Col>

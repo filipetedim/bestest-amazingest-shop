@@ -16,6 +16,9 @@ import './style.scss';
 // Stores
 import CartStore from '../../stores/cartStore';
 
+// Utils
+import Currency from '../../utils/currencyParser';
+
 class Cart extends Component {
   state = { toggle: false, bundles: [] };
 
@@ -128,7 +131,7 @@ class Cart extends Component {
                 <FontAwesomeIcon size="1x" icon={faChevronUp} />
               )}
             </Col>
-            <Col className="text-right bar-cart-title-total">Total: {totalPrice}</Col>
+            <Col className="text-right bar-cart-title-total">Total: {Currency.get(totalPrice)}</Col>
           </Row>
 
           {/* Content */}
@@ -153,7 +156,7 @@ class Cart extends Component {
                     />
                   </Col>
                   <Col xs={4} className="text-right">
-                    {product.price * product.quantity}
+                    {Currency.get(product.price * product.quantity)}
                   </Col>
                 </Row>
               </Col>
@@ -168,13 +171,13 @@ class Cart extends Component {
                   {bundle.quantity}x {bundle.name}
                 </Col>
                 <Col xs={12} className="bar-cart-footer-discount-price text-right">
-                  - {this.getBundleTotalDiscount(bundle)}
+                  - {Currency.get(this.getBundleTotalDiscount(bundle))}
                 </Col>
               </React.Fragment>
             ))}
             <Col className="mt-3 bar-cart-footer-total">Total</Col>
             <Col className="mt-3 text-right bar-cart-footer-total">
-              {totalPrice - totalDiscountPrice}
+              {Currency.get(totalPrice - totalDiscountPrice)}
             </Col>
             <Col xs={12} className="mt-2">
               <Button color="warning" block onClick={this.goToCheckout}>

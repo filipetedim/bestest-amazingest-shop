@@ -7,14 +7,12 @@ import Routes from './Routes';
 // Containers
 import Header from './containers/Header';
 
-// Services
-import IpstackService from './services/externalServices';
+// Utils
+import Currency from './utils/currencyParser';
 
 class App extends Component {
   render() {
-    IpstackService.getIpstackLocale().then(response => {
-      console.log(response);
-    });
+    Currency.setCurrency();
 
     return (
       <React.Fragment>

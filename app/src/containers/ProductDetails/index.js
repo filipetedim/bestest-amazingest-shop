@@ -16,6 +16,7 @@ import CartStore from '../../stores/cartStore';
 
 // Utils
 import ExtraDataImages from '../../utils/extraData';
+import Currency from '../../utils/currencyParser';
 
 export default class ProductDetails extends Component {
   state = { loading: true, error: null, addedToCart: false, product: {} };
@@ -65,7 +66,7 @@ export default class ProductDetails extends Component {
                   {product.name}
                 </Col>
                 <Col xs={12} className="bas-product-details-price">
-                  <span>Price:</span> {product.price}{' '}
+                  <span>Price:</span> {Currency.get(product.price)}{' '}
                   <Button
                     size="sm"
                     color="light"

@@ -9,9 +9,6 @@ import './style.scss';
 // Stores
 import CartStore from '../../stores/cartStore';
 
-// Utils
-import History from '../../utils/history';
-
 export default class BundleItem extends Component {
   state = { addedToCart: false, bundle: { products: [] } };
 

@@ -47,14 +47,14 @@ class Cart extends Component {
         addedToBundle = false;
 
         // Searches cart to see if product exists and store its index
-        bundle.products.forEach(productId => {
+        for (let bundleIndex = 0; bundleIndex < bundle.products.length; bundleIndex++) {
           for (let i = productCartCopy.length - 1; i > -1; i--) {
-            if (productCartCopy[i]._id.toString() === productId.toString()) {
+            if (productCartCopy[i]._id.toString() === bundle.products[bundleIndex].toString()) {
               indexesToRemove.push(i);
               break;
             }
           }
-        });
+        }
 
         // If found as many indexes as products in a bundle, add that bundle and remove from cart clone
         if (indexesToRemove.length === bundle.products.length) {
